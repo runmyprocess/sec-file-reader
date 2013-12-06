@@ -1,0 +1,6 @@
+{
+"protocol":"fileReader",
+"data":{
+		"path":"log2.txt"
+	} 
+}
