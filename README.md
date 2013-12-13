@@ -5,7 +5,7 @@ The "File Reader Adapter" is used to retrieve files from a local server. It requ
 
 ##Install and Configure the Adapter
 
-1. Make sure you have [Java](http://www.oracle.com/technetwork/java/index.html) and [Maven](http://maven.apache.org/) installed on your machine.
+1. Make sure you have [Java](http://www.oracle.com/technetwork/java/index.html) and [Maven](http://maven.apache.org/) installed on your machine. You must also have the RMP's [JSON](https://github.com/runmyprocess/json/) and the [sec-sdk](https://github.com/runmyprocess/sec-sdk) libraries installed on your local mvn repo.
 2. Download the sec-file-reader project and run mvn clean install in the project's folder.
 
 Run mvn clean install :
