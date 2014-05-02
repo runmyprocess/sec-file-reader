@@ -39,6 +39,9 @@ import org.runmyprocess.json.JSONObject;
 
 public class FileReader implements ProtocolInterface {
 
+    // Logging instance
+    private static final  SECLogManager LOG = new SECLogManager(FileReader.class.getName());
+
 	private Response response = new Response();
 
 	public FileReader() {
@@ -104,16 +107,14 @@ public class FileReader implements ProtocolInterface {
 			
 			final String path = jsonObject.getString("path");//Gets the path sent 
 
-		      System.out.println("Searching for fileReader config file ...");
 			  Config config = new Config("configFiles"+File.separator+"fileReader.config",true);//finds and reads the config file
-		      System.out.println("fileReader config file found");
 		      String basePath = config.getProperty("basePath");//sets the base path to look for the file
 			 
-			try{ 
-				System.out.println("Looking for file...");
+			try{
+                LOG.log("Looking for file...", Level.INFO);
 				File file = new File(basePath+path);//gets the file 
 				JSONObject fileInfo = loadFile(file);//loads the file and returns an object with the name and base64 string
-				System.out.println("File Read!");
+				LOG.log("File Read!",Level.INFO);
 				
 				response.setStatus(200);//sets the return status to 200
 				JSONObject resp = new JSONObject();

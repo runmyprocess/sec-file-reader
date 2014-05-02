@@ -34,21 +34,20 @@ public class FileReaderHandler {
     /**
      * reads the configuration files and calls the run method of the generic handlerconfig
      * @param args
-     * @throws IOException
+     * @throws java.io.IOException
      */
     public static void main(String [] args)throws java.io.IOException{
-    	
+        // Logging instance
+        final  SECLogManager LOG = new SECLogManager(FileReader.class.getName());
 		try{
 			GenericHandler genericHandler = new	GenericHandler();
-			System.out.println("Searching for config file...");
+            LOG.log( "Starting FileReader Adapter...",Level.INFO);
 			Config conf = new Config("configFiles"+File.separator+"handler.config",true);
-			System.out.println("Handler config file found for manager ping port "+
-								conf.getProperty("managerPort"));
 			genericHandler.run(conf);
+            LOG.log( "FileReader Adapter Started",Level.INFO);
     	}catch( Exception e ){
-	        	SECErrorManager errorManager = new SECErrorManager();
-	        	errorManager.logError(e.getMessage(), Level.SEVERE);
-	        	e.printStackTrace();
+            LOG.log(e.getLocalizedMessage(),e, Level.SEVERE);//logs the error
+            e.printStackTrace();//prints the error stack trace
     		}
         }
 
